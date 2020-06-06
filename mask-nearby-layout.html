@@ -7,7 +7,7 @@
 
     <!-- 직접 만든 CSS 를 불러오는 부분입니다. -->
     <link href="./mask-nearby-layout.css" rel="stylesheet">
-    
+
     <!-- fontawesome의 아이콘 폰트를 사용하기 위해서 필요합니다. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
@@ -37,17 +37,32 @@
             </div>
         </div>
 
+        <!-- 범례 -->
+        <div class="legend">
+            <img src="https://mask-nearby.com/img/color-info.48ec319e.png">
+        </div>
+
         <!-- 지도를 나타낼 부분입니다. -->
         <div id="map">
-            <img src="https://images.unsplash.com/photo-1553290322-0440fe3b1ddd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+            <!-- <img src="https://images.unsplash.com/photo-1553290322-0440fe3b1ddd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"> -->
         </div>
+
     </section>
 
     <!-- 카카오 지도 SDK를 사용하기 위해 필요합니다. -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=adde3e31f34a0d1133abb8fbb52c7170"></script>
-    
-    <!-- 앞으로 작성할 지도관련된 스크립트는 이 아래에 작성합니다. -->
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a04547f4eeeb733da14977b3404a38d3"></script>
 
+    <!-- 앞으로 작성할 지도관련된 스크립트는 이 아래에 작성합니다. -->
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
 </body>
 
 </html>

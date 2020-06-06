@@ -41,31 +41,33 @@ body {
 }
 
 .search-bar-wrapper {
-  /* 검색창 크기 */
+  /* 검색창 배경의 크기 */
   width: 90vw;
   height: 7vh;
   max-height: 50px;
   padding: 0 10px;
 
-  /* 검색창 위치 */
+  /* 검색창 배경의 위치 */
   margin: 0 auto;
 
-  /* 검색창 내부 아이템들 정렬 */
+  /* 검색창 배경의 내부 아이템들 정렬 */
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 
-  /* 검색창 스타일 */
+  /* 검색창 배경의 스타일 */
   border-radius: 40px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
   background-color: white;
 }
 
 .search-bar-wrapper > .search-bar {
+  /* 검색창 자체의 크기 */
   width: 90%;
   height: 80%;
 
+  /* 검색창 자체의 스타일 */
   border-style: none;
   font-size: 15px;
   font-weight: bold;
@@ -79,6 +81,24 @@ body {
 .search-bar-wrapper > .search-button-wrapper {
   color: skyblue;
   font-size: 30px;
+}
+
+.legend {
+  /* 범례 위치 */
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 100;
+
+  /* 범례의 크기 */
+  width: 8rem;
+  height: 8rem;
+}
+
+.legend > img {
+  /* 범례의 크기 */
+  width: 100%;
+  height: 100%;
 }
 
 #map {
