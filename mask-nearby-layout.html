@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 직접 만든 CSS 를 불러오는 부분입니다. -->
+    <link href="./mask-nearby-layout.css" rel="stylesheet">
+    
+    <!-- fontawesome의 아이콘 폰트를 사용하기 위해서 필요합니다. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+    <!-- google fonts의 폰트를 사용하기 위해서 필요합니다. -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 뒤로가기 버튼이 있는 헤더 -->
+    <header>
+        <div class="navbar">
+            <div class="back-button-wrapper">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 지도와 검색창이 있는 섹션 -->
+    <section>
+        <div class="search-bar-positioner">
+            <div class="search-bar-wrapper">
+                <input class="search-bar" type="text" placeholder="목적지를 검색하세요" autofocus>
+                <div class="search-button-wrapper">
+                    <i class="fas fa-search "></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 지도를 나타낼 부분입니다. -->
+        <div id="map">
+            <img src="https://images.unsplash.com/photo-1553290322-0440fe3b1ddd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+        </div>
+    </section>
+
+    <!-- 카카오 지도 SDK를 사용하기 위해 필요합니다. -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=adde3e31f34a0d1133abb8fbb52c7170"></script>
+    
+    <!-- 앞으로 작성할 지도관련된 스크립트는 이 아래에 작성합니다. -->
+
+</body>
+
+</html>

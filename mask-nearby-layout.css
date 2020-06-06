@@ -1,0 +1,96 @@
+/* 기본으로 들어가있는 스타일 제거 */
+html,
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.navbar {
+  /* 색 지정 */
+  opacity: 0.9;
+  background-color: rgb(117, 208, 231);
+
+  /* 크기 지정 */
+  width: 100%;
+  height: 60px;
+
+  /* 위치 지정 */
+  position: relative;
+  z-index: 3;
+}
+
+.back-button-wrapper {
+  /* back button 위치 지정 */
+  position: absolute;
+  left: 15px;
+  top: 15px;
+}
+
+.back-button-wrapper > i {
+  /* navbar의 뒤로가기 버튼 스타일 */
+  color: white;
+  font-size: 30px;
+}
+
+.search-bar-positioner {
+  /* 검색창의 위치 지정 */
+  position: relative;
+  top: 30px;
+  z-index: 3;
+}
+
+.search-bar-wrapper {
+  /* 검색창 크기 */
+  width: 90vw;
+  height: 7vh;
+  max-height: 50px;
+  padding: 0 10px;
+
+  /* 검색창 위치 */
+  margin: 0 auto;
+
+  /* 검색창 내부 아이템들 정렬 */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  /* 검색창 스타일 */
+  border-radius: 40px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.search-bar-wrapper > .search-bar {
+  width: 90%;
+  height: 80%;
+
+  border-style: none;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.search-bar-wrapper > .search-bar:focus {
+  outline: none;
+}
+
+.search-bar-wrapper > .search-button-wrapper {
+  color: skyblue;
+  font-size: 30px;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+}
+
+#map > img {
+  object-fit: cover;
+  width: 100%;
+  height: 100vh;
+}
