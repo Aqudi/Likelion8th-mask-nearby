@@ -30,8 +30,8 @@
     <section>
         <div class="search-bar-positioner">
             <div class="search-bar-wrapper">
-                <input class="search-bar" type="text" placeholder="목적지를 검색하세요" autofocus>
-                <div class="search-button-wrapper">
+                <input id="search-bar" type="text" placeholder="목적지를 검색하세요" autofocus>
+                <div id="search-btn">
                     <i class="fas fa-search "></i>
                 </div>
             </div>
@@ -51,18 +51,80 @@
 
     <!-- 카카오 지도 SDK를 사용하기 위해 필요합니다. -->
     <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a04547f4eeeb733da14977b3404a38d3"></script>
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a04547f4eeeb733da14977b3404a38d3&libraries=services"></script>
 
     <!-- 앞으로 작성할 지도관련된 스크립트는 이 아래에 작성합니다. -->
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
-		};
+    <script>
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
 
-		var map = new kakao.maps.Map(container, options);
-	</script>
+        // 마커 클릭시 정보를 띄울 infowindow
+        var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+        // 장소 검색 객체
+        var ps = new kakao.maps.services.Places();
+        // 지도 객체
+        var map = new kakao.maps.Map(container, options);
+
+        // 최대 축소 범위 지정
+        map.setMaxLevel(5);
+
+        // Search 버튼 연결
+        let search_btn = document.querySelector("#search-btn")
+        let search_bar = document.querySelector("#search-bar");
+        search_btn.addEventListener("click", () => {
+            // console.log(e);
+            let keyword = search_bar.value;
+            if (keyword) {
+                keywordSearch(keyword);
+            } else {
+                alert("검색어를 입력해주세요.");
+            }
+        })
+
+        // Search 버튼 Enter 연결
+        search_bar.addEventListener("keyup", () => {
+            if (event.keyCode === 13) {
+                search_btn.click();
+            }
+        });
+
+        // 키워드로 장소를 검색합니다
+        function keywordSearch(keyword) {
+            console.log(keyword);
+            ps.keywordSearch(keyword, keywordSearchCallback);
+        }
+        // 장소 검색 후 할 일을 정의합니다.
+        function keywordSearchCallback(data, status, pagination) {
+            // console.log(status)
+            if (status === kakao.maps.services.Status.OK) {
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+                // LatLngBounds 객체에 좌표를 추가합니다
+                var bounds = new kakao.maps.LatLngBounds();
+
+                for (var i = 0; i < data.length; i++) {
+                    bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+                }
+
+                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+                map.setBounds(bounds);
+            }
+        }
+
+        function drawMarker(place) {
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: new kakao.maps.LatLng(place.y, place.x)
+            });
+
+            kakao.maps.event.addListener(marker, "click", function () {
+                infowindow.setContent("Hello");
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
 </body>
 
 </html>
